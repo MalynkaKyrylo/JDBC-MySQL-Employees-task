@@ -1,10 +1,13 @@
 package org.example.app.services;
 
+import org.example.app.controllers.employees.EmployeeController;
 import org.example.app.controllers.positions.PositionController;
 import org.example.app.exceptions.OptionException;
+import org.example.app.services.employees.EmployeeService;
 import org.example.app.services.positions.PositionService;
 import org.example.app.utils.AppStarter;
 import org.example.app.utils.Constants;
+import org.example.app.views.employees.EmployeeView;
 import org.example.app.views.positions.PositionView;
 
 public class AppService {
@@ -17,8 +20,10 @@ public class AppService {
     }
 
     public void getEmployees() {
-        // TODO make Employees actions
-        System.out.println("Employees actions");
+        EmployeeView view = new EmployeeView();
+        EmployeeService service = new EmployeeService();
+        EmployeeController controller = new EmployeeController(view, service);
+        controller.runEmployees();
     }
 
     public void getNoSuchOption(int choice) {
